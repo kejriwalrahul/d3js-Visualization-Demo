@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- India State Map  -->
+    <title>Data Set Visualization Using D3JS</title>
+
+    <!--  Scripts  -->
+    <script type="text/javascript" src="d3.min.js"></script>
+    <script type="text/javascript" src="d3.geo.min.js"></script>
+
+    <!--  Styles  -->  
+	<link rel="stylesheet" href="bootstrap.min.css">
+    <style type="text/css">
+    svg {
+      background: #eee;
+      }
+      
+    #india {
+      opacity: .8;
+      stroke: #000000;
+      stroke-width: .7;
+      }
+
+    div.tooltip {	
+	    position: absolute;			
+	    text-align: center;			
+	    width: 70px;					
+	    height: 45px;					
+	    padding: 2px;				
+	    font: 12px sans-serif;		
+	    background: lightsteelblue;	
+	    border: 0px;		
+	    border-radius: 8px;			
+	    pointer-events: none;			
+	}  
+    </style>
+  </head>
+  
+<body>
+<div style="margin: 15px">
+<h2>Comparison between Literacy Rate and Per Capita State Domestic Product:</h2>
+<h4>(Maps show only undisputed Indian territory, data as per 2011 census)</h4>
+</div>
+<div style="margin:15px; padding-left: 40px">
+  <div class="panel panel-default col-md-5">
+	  <h1>Literacy Rate India(%): </h1>
+	  <br><br><br>
+	  <div id="chart"></div>
+  </div>
+  <div class="panel panel-default col-md-5 col-md-offset-1">
+  	  <h1>Per Capita State Domestic Product India: </h1>
+	  <br>
+	  <div id="chart2"></div>
+  </div>
+  <div class="panel panel-default col-md-8 col-md-offset-2">
+  	  <h1>Inferences: </h1>
+	  <ol class="list-group">
+		  <li class="list-group-item">
+		  	Some correlation between Literacy Rate and Per Capita State domestic product can be easily seen.
+		  </li>
+		  <li class="list-group-item">
+		  	States like <i>Tamil Nadu, Kerela, Karanataka, Goa, Maharashtra </i>&amp;<i> Gujarat</i> show high literacy rates and and high per capita state domestic product. Thus, a positive correlation can be seen here.</li>
+		  <li class="list-group-item">
+		  	A similar case can be seen for the states <i>Pubjab, Haryana, Himachal Pradesh, Uttaranchal, Sikkim</i> &amp; <i>Delhi</i>.
+		  </li>
+		  <li class="list-group-item">
+		  	States like <i>Rajasthan, Uttar Pradesh, Bihar, Jharkhand </i>&amp;<i> Jammu &amp; Kashmir</i> show lesser literacy rates and lower per capita state domestic product. Again, a positive correlation can be seen here.
+		  </li>
+  		  <li class="list-group-item">
+		  	However, <i>north-eastern states</i> and <i>Andhra Pradesh</i> show abnormal literacy rates and per capita state domestic product. Here, a negative correlation is seen.
+		  </li>
+		  <li class="list-group-item">
+		  	We may hypothesize that in general higher literacy rates lead to higher per capita state domestic product. We may consider deviations from this rule as unknown additional factors.
+		  </li>
+	   </ol>
+  </div>
+</div>
+<script type="text/javascript" src="plotter.js"></script>
+</body>
+</html>
