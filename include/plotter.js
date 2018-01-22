@@ -24,7 +24,7 @@ var plotMap = function(idata){
 
 		var india = map.append("svg:g");
 
-		d3.json("states.json", function(json) {
+		d3.json("include/states.json", function(json) {
 		  india.selectAll("path")
 		      .data(json.features)
 		    .enter().append("path")
@@ -81,7 +81,7 @@ var plotMap = function(idata){
 }
 
 
-d3.json("litrate.json", function(json){
+d3.json("include/litrate.json", function(json){
 	indata1 = json;
 });
 var literacyMap = plotMap(indata1);
@@ -94,7 +94,7 @@ literacyMap("chart", function(d,i){
 },"rgb(15,15,0)","rgb(75,75,0)","rgb(255,255,0)", "60%", "100%");
 
 var indata2;
-d3.json("newgdprate.json", function(json){
+d3.json("include/newgdprate.json", function(json){
 	indata2 = json;
 });
 var sdpMap = plotMap(indata2);
