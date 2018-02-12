@@ -3,6 +3,7 @@
   <head>
     <!-- India State Map  -->
     <title>Data Set Visualization Using D3JS</title>
+	<meta name="viewport" content="width=device-width" />	
 
     <!--  Scripts  -->
     <script type="text/javascript" src="include/d3.min.js"></script>
@@ -11,47 +12,91 @@
     <!--  Styles  -->  
 	<link rel="stylesheet" href="include/bootstrap.min.css">
     <style type="text/css">
-    svg {
-      background: #eee;
-      }
-      
-    #india {
-      opacity: .8;
-      stroke: #000000;
-      stroke-width: .7;
-      }
+	    svg {
+	      background: #eee;
+	      }
+	      
+	    #india {
+	      opacity: .8;
+	      stroke: #000000;
+	      stroke-width: .7;
+      	}
 
-    div.tooltip {	
-	    position: absolute;			
-	    text-align: center;			
-	    width: 70px;					
-	    height: 45px;					
-	    padding: 2px;				
-	    font: 12px sans-serif;		
-	    background: lightsteelblue;	
-	    border: 0px;		
-	    border-radius: 8px;			
-	    pointer-events: none;			
-	}  
+	    div.tooltip {	
+		    position: absolute;			
+		    text-align: center;			
+		    width: 70px;					
+		    height: 45px;					
+		    padding: 2px;				
+		    font: 12px sans-serif;		
+		    background: lightsteelblue;	
+		    border: 0px;		
+		    border-radius: 8px;			
+		    pointer-events: none;			
+		}  
 
-	body{
-		overflow: hidden; 
-	}
+		body{
+			overflow: hidden; 
+		}
 
-	.list-group-item{
-		background: transparent;
-		padding: 5px 10px;
-	}
+		.list-group-item{
+			background: transparent;
+			padding: 5px 10px;
+		}
 
-	.list-group{
-		margin-bottom: 0;
-	}
+		.list-group{
+			margin-bottom: 0;
+		}
+
+		.left_panel {
+			background-color: #606060;
+			color: white; 
+			height: 100vh;
+		}
+
+		.page_row {
+			height: 100vh;
+		}
+
+		.chart_container {
+			margin-top: 15vh;
+		}
+
+		.chart_panel {
+			background-color: #eee; 
+			height: 100vh; 
+			text-align: center;
+		}
+
+		@media(max-width: 1000px){
+			.left_panel {
+				height: fit-content;
+				padding: 10px 15px;
+			}
+			
+			.page_row {
+				height: fit-content;
+			}
+
+			body {
+				overflow: inherit;
+			}
+
+			.chart_container {
+				margin-top: 0;
+			}
+		
+			.chart_panel {
+				height: fit-content;
+				padding: 25px;
+			}
+		}
     </style>
   </head>
   
 <body>
-	<div class="row" style="height: 100vh;">
-		<div class="col-md-4" style="background-color: #606060; color: white; height: 100vh;">
+	<div class="row page_row">
+		<div class="col-md-4 left_panel">
 			<div style="margin: 15px;">
 				<h3>Comparison between Literacy Rate and Per Capita State Domestic Product</h3>
 				<h4><i>(Maps show only undisputed Indian territory, data as per 2011 census)</i></h4>
@@ -79,14 +124,14 @@
 			   	</ol>
 			</div>			
 		</div>
-		<div class="col-md-4" style="background-color: #eee; height: 100vh; text-align: center;">
-			<div style="margin-top: 15vh">
-				<div id="chart" style="margin: auto;"></div>
-				<h4><b>Fig. 1:</b> Literacy Rate India(%)</h4>				
+		<div class="col-md-4 chart_panel">
+			<div class="chart_container">
+				<div id="chart"></div>
+				<h4><b>Fig. 1:</b> Literacy Rate India (%)</h4>				
 			</div>
 		</div>
-		<div id='secfig' class="col-md-4" style="background-color: #eee; height: 100vh;">
-		  	<div style="margin-top: 15vh">
+		<div class="col-md-4 chart_panel">
+		  	<div class='chart_container'>
 			  	<div id="chart2"></div>
 		  	  	<h4><b>Fig. 2:</b> Per Capita State Domestic Product India</h4>		  		
 		  	</div>

@@ -1,14 +1,20 @@
-// function startplot(){
+// Map scale factor
 var scalefactor = 0.7;
+if (document.documentElement.clientWidth <= 415)
+	scalefactor = 0.1 * (document.documentElement.clientWidth - 320) / (55) + 0.5
 
+// Tooltip
 var div = d3.select("body").append("div")	
 		    .attr("class", "tooltip")				
-			.style("opacity", 0);
+			.style("opacity", 0).style('display','float');
 
-var indata1;
-var indata2;
+
+/*
+	Returns function for plotting a map on given input data
+*/
 var plotMap = function(idata){
 	var indata = idata;
+
 	var plot = function(id, filler, mouseover, v1,v2,v3, t1, t2){
 		var w = scalefactor*600;
 		var h = scalefactor*600;
@@ -77,31 +83,39 @@ var plotMap = function(idata){
 		  proj.translate([scalefactor*-1240, scalefactor*720]);
 		}	
 	}	
+
 	return plot;
 }
 
 
+// Load first dataset
+var indata1;
 d3.json("include/litrate.json", function(json){
 	indata1 = json;
 });
+// Plot First Figure
 var literacyMap = plotMap(indata1);
 literacyMap("chart", function(d,i){
-	return "rgb(" + (255-Math.floor(indata1[d.id]-60)*6) + ","+ (255-Math.floor(indata1[d.id]-60)*6) + ",0)"
-},function(d,i){
-	d3.select(this).attr('opacity', '0.5');
-	div .transition().duration(200).style("opacity", .9);		
-	div	.html(d.id+": "+indata1[d.id] + "%").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY - 28) + "px");	
-},"rgb(15,15,0)","rgb(75,75,0)","rgb(255,255,0)", "60%", "100%");
+		return "rgb(" + (255-Math.floor(indata1[d.id]-60)*6) + ","+ (255-Math.floor(indata1[d.id]-60)*6) + ",0)"
+	}, function(d,i){
+		d3.select(this).attr('opacity', '0.5');
+		div .transition().duration(200).style("opacity", .9);		
+		div	.html(d.id+": "+indata1[d.id] + "%").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY - 28) + "px");	
+	}, "rgb(15,15,0)","rgb(75,75,0)","rgb(255,255,0)", "60%", "100%");
 
 var indata2;
 d3.json("include/newgdprate.json", function(json){
 	indata2 = json;
 });
+
+
+// Load second dataset
+// Plot Second Figure
 var sdpMap = plotMap(indata2);
 sdpMap("chart2", function(d,i){
-	return "rgb("+(255-Math.floor(parseFloat(indata2[d.id]).toFixed(2)/50))+"," + (255-Math.floor(parseFloat(indata2[d.id]).toFixed(2)/50)) + ",0)"
-},function(d,i){
-	d3.select(this).attr('opacity', '0.5');
-	div .transition().duration(200).style("opacity", .9);		
-	div	.html(d.id+": "+parseFloat(indata2[d.id]).toFixed(0)*10).style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY - 28) + "px");	
-},"rgb(0,0,0)","rgb(64,64,0)","rgb(255,255,0)", "0", "255000");
+		return "rgb("+(255-Math.floor(parseFloat(indata2[d.id]).toFixed(2)/50))+"," + (255-Math.floor(parseFloat(indata2[d.id]).toFixed(2)/50)) + ",0)"
+	}, function(d,i){
+		d3.select(this).attr('opacity', '0.5');
+		div .transition().duration(200).style("opacity", .9);		
+		div	.html(d.id+": "+parseFloat(indata2[d.id]).toFixed(0)*10).style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY - 28) + "px");	
+	}, "rgb(0,0,0)","rgb(64,64,0)","rgb(255,255,0)", "0", "255000");
