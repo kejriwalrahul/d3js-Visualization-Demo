@@ -1,5 +1,5 @@
 // function startplot(){
-var scalefactor = 0.83;
+var scalefactor = 0.7;
 
 var div = d3.select("body").append("div")	
 		    .attr("class", "tooltip")				
