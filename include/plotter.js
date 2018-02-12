@@ -4,9 +4,9 @@ if (document.documentElement.clientWidth <= 415)
 	scalefactor = 0.1 * (document.documentElement.clientWidth - 320) / (55) + 0.5
 
 // Tooltip
-var div = d3.select("body").append("div")	
+var div = d3.select("head").append("div")	
 		    .attr("class", "tooltip")				
-			.style("opacity", 0).style('display','float');
+			.style("opacity", 0).style('display','float').style("top", 0);
 
 
 /*
